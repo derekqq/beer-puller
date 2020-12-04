@@ -16,7 +16,7 @@ const useFetchBeer = () => {
   }, 100);
 
   useEffect(() => {
-    if (draft.length > 0) fetchData(draft);
+    draft.length && fetchData(draft);
 
     return () => fetchData.cancel();
   }, [draft]);

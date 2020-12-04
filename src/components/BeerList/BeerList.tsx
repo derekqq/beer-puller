@@ -22,12 +22,12 @@ const BeerList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {beersList.length > 0 && beersList.map((item) => (
+          {!!beersList.length && beersList.map((item) => (
             <BeerListItem key={item.id} item={item} />
           ))}
         </tbody>
       </table>
-      {beersList.length === 0 && <BeerNotFound/>}
+      {beersList.length || <BeerNotFound/>}
     </>
   );
 };
