@@ -1,36 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { setBeers } from 'slices/beerSlice';
-import {getByName} from 'helpers/api';
+import useFetchBeer from '../../hooks/useFetchBeer';
 
-const debounce = require('lodash.debounce');
+
 
 const SearchBox: React.FC = () => {
-  const [draft, setDraft] = useState('');
-  const [result, setResult] = useState('');
-
-  const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-
-  const fetchData = debounce(async(name: string) => {
-    const fetchedBeers = await getByName(name);
-    dispatch(setBeers(fetchedBeers));
-    setResult(name);
-  }, 100);
-
-  useEffect(() => {
-    if(draft.length>0) fetchData(draft);
-  },[draft])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDraft(e.target.value);
-  }
-
-  const onSubmit = () => {
-    fetchData(draft);
-    setDraft('');
-  };
+  const { draft, result, onSubmit, handleChange } = useFetchBeer();
 
   return (
     <>
