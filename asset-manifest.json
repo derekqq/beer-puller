@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/beer-puller/static/css/main.2d30e385.chunk.css",
-    "main.js": "/beer-puller/static/js/main.5eca1283.chunk.js",
-    "main.js.map": "/beer-puller/static/js/main.5eca1283.chunk.js.map",
+    "main.js": "/beer-puller/static/js/main.58b794e9.chunk.js",
+    "main.js.map": "/beer-puller/static/js/main.58b794e9.chunk.js.map",
     "runtime-main.js": "/beer-puller/static/js/runtime-main.f00a386f.js",
     "runtime-main.js.map": "/beer-puller/static/js/runtime-main.f00a386f.js.map",
     "static/css/2.95f25948.chunk.css": "/beer-puller/static/css/2.95f25948.chunk.css",
-    "static/js/2.ef56b451.chunk.js": "/beer-puller/static/js/2.ef56b451.chunk.js",
-    "static/js/2.ef56b451.chunk.js.map": "/beer-puller/static/js/2.ef56b451.chunk.js.map",
+    "static/js/2.698e20f1.chunk.js": "/beer-puller/static/js/2.698e20f1.chunk.js",
+    "static/js/2.698e20f1.chunk.js.map": "/beer-puller/static/js/2.698e20f1.chunk.js.map",
     "index.html": "/beer-puller/index.html",
     "static/css/2.95f25948.chunk.css.map": "/beer-puller/static/css/2.95f25948.chunk.css.map",
     "static/css/main.2d30e385.chunk.css.map": "/beer-puller/static/css/main.2d30e385.chunk.css.map",
-    "static/js/2.ef56b451.chunk.js.LICENSE.txt": "/beer-puller/static/js/2.ef56b451.chunk.js.LICENSE.txt"
+    "static/js/2.698e20f1.chunk.js.LICENSE.txt": "/beer-puller/static/js/2.698e20f1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f00a386f.js",
     "static/css/2.95f25948.chunk.css",
-    "static/js/2.ef56b451.chunk.js",
+    "static/js/2.698e20f1.chunk.js",
     "static/css/main.2d30e385.chunk.css",
-    "static/js/main.5eca1283.chunk.js"
+    "static/js/main.58b794e9.chunk.js"
   ]
 }
