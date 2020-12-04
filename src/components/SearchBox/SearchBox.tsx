@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { setBeers } from 'slices/beerSlice';
-import {getByName} from 'helpers/api'
+import {getByName} from 'helpers/api';
 
+const debounce = require('lodash.debounce');
 
 const SearchBox: React.FC = () => {
   const [draft, setDraft] = useState('');
@@ -12,14 +13,19 @@ const SearchBox: React.FC = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDraft(e.target.value);
+  const fetchData = async(name: string) => {
+    const fetchedBeers = await getByName(name);
+    dispatch(setBeers(fetchedBeers));
+    setResult(name);
   }
 
-  const onSubmit = async () => {
-    const fetchedBeers = await getByName(draft);
-    dispatch(setBeers(fetchedBeers));
-    setResult(draft)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDraft(e.target.value);
+    fetchData(e.target.value);
+  }
+
+  const onSubmit = () => {
+    fetchData(draft);
     setDraft('');
   };
 
@@ -29,8 +35,8 @@ const SearchBox: React.FC = () => {
       <label htmlFor="draft">Type your beer name</label>
       <div className="d-flex">
         <input
-          value={draft}
-          onChange={handleChange}
+          
+          onChange={debounce(handleChange,100)}
           type="text"
           className="form-control"
           id="draft"
