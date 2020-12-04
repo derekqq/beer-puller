@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { setBeers } from 'slices/beerSlice';
@@ -13,15 +13,18 @@ const SearchBox: React.FC = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
 
-  const fetchData = async(name: string) => {
+  const fetchData = debounce(async(name: string) => {
     const fetchedBeers = await getByName(name);
     dispatch(setBeers(fetchedBeers));
     setResult(name);
-  }
+  }, 100);
+
+  useEffect(() => {
+    if(draft.length>0) fetchData(draft);
+  },[draft])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDraft(e.target.value);
-    fetchData(e.target.value);
   }
 
   const onSubmit = () => {
@@ -35,8 +38,8 @@ const SearchBox: React.FC = () => {
       <label htmlFor="draft">Type your beer name</label>
       <div className="d-flex">
         <input
-          
-          onChange={debounce(handleChange,100)}
+          value={draft}
+          onChange={handleChange}
           type="text"
           className="form-control"
           id="draft"
