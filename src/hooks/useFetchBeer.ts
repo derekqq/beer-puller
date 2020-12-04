@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setBeers } from 'slices/beerSlice';
 import { getByName } from 'helpers/api';
-
 const debounce = require('lodash.debounce');
 
 const useFetchBeer = () => {
@@ -18,6 +17,8 @@ const useFetchBeer = () => {
 
   useEffect(() => {
     if (draft.length > 0) fetchData(draft);
+
+    return () => fetchData.cancel();
   }, [draft]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
