@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {IBeerArray} from "types"
+import { IBeerArray } from 'types';
 
 const initialState: IBeerArray = {
   beers: [],

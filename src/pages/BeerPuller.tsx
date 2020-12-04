@@ -1,9 +1,8 @@
 import React from 'react';
-import SearchBox from '../components/SearchBox/SearchBox'
-import BeerList from '../components/BeerList/BeerList'
+import SearchBox from '../components/SearchBox/SearchBox';
+import BeerList from '../components/BeerList/BeerList';
 
 const BeerPuller: React.FC = () => {
-  
   return (
     <div className="container mt-5">
       <div className="row">

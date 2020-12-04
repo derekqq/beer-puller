@@ -1,6 +1,6 @@
-import axios from "axios";
-import {serverUrl} from "./routes";
-import {replaceSpace} from "./replaceString";
+import axios from 'axios';
+import { serverUrl } from './routes';
+import { replaceSpace } from './replaceString';
 
 export const getByName = (name: string) => {
   return axios
