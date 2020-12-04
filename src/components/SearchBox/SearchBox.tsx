@@ -6,40 +6,45 @@ import {getByName} from 'helpers/api'
 
 
 const SearchBox: React.FC = () => {
-  const [beerName, setBeerName] = useState('');
+  const [draft, setDraft] = useState('');
+  const [result, setResult] = useState('');
+
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBeerName(e.target.value);
+    setDraft(e.target.value);
   }
 
   const onSubmit = async () => {
-    const fetchedBeers = await getByName(beerName);
+    const fetchedBeers = await getByName(draft);
     dispatch(setBeers(fetchedBeers));
-    setBeerName('');
+    setResult(draft)
+    setDraft('');
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="beerName">Type your beer name</label>
+      <label htmlFor="draft">Type your beer name</label>
       <div className="d-flex">
         <input
-          value={beerName}
+          value={draft}
           onChange={handleChange}
           type="text"
           className="form-control"
-          id="beerName"
-          name="beerName"
+          id="draft"
+          name="draft"
           ref={register({ required: true, minLength: 1 })}
         />
-        {errors.beerName && <p className="text-danger mt-1">This field is required</p>}
-
         <button className="btn btn-primary" type="submit">
           Search
         </button>
       </div>
     </form>
+    {errors.draft && <p className="text-danger mt-1">This field is required</p>}
+    {result.length>0 && <p className="h3">Result for <strong>{result}</strong></p>}
+    </>
   );
 };
 
